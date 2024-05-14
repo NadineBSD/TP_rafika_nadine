@@ -14,14 +14,13 @@ public class QuestionLibre extends Question {
         System.out.println(reponse);
     }
 
-    //getters and setters 
-    // public void setReponse (String reponse){
-    //     this.reponse = reponse ; 
-    // }
+    public void setReponse (String reponse){
+       this.reponse = reponse ; 
+    }
 
-    // public String getReponse (){
-    //     return reponse ; 
-    // }
+    public String getReponse (){
+        return reponse ; 
+    }
 
    
 }

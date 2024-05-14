@@ -19,10 +19,34 @@ public class Questionnaire extends Test {
 		this.setQuestions = setQuestions;
 	}
 
-	public void ajouterQuestion(String enonce) {
-		Question qst;
+	public void ajouterQuestion() {
+		Scanner scanner = new Scanner(System.in);
 
-		//setQuestions.add(qst);
+		System.out.print("Voulez vous ajouter :");
+		System.out.print("1_ Ajouter une QCM. ");
+		System.out.print("2_ Rechercher une QCU . ");
+		System.out.print("3_ Ajouter une Question Libre. ");
+		int c = scanner.nextInt();
+		switch (c) {
+			case 1 -> {
+				System.out.print("Voulez donner l'enonce :");
+				String enonce = scanner.nextLine();
+				ajouterQCM(enonce);
+			}
+			case 2 -> {
+				System.out.print("Voulez donner l'enonce :");
+				String enonc = scanner.nextLine();
+				ajouterQCU(enonc);
+			}
+			case 3 -> {
+				System.out.print("Voulez donner l'enonce :");
+				String enon = scanner.nextLine();
+				QuestionLibre qst = new QuestionLibre(enon);
+				setQuestions.add(qst);
+				
+			}
+		}
+
 	}
 
 	@Override
@@ -63,21 +87,20 @@ public class Questionnaire extends Test {
 
 	}
 
+	@Override
 	public void modifier() {
 		Scanner scanner = new Scanner(System.in);
 
 		// Prompt the user to enter the patient's name
 		System.out.print("Voulez vous : ");
 		System.out.print("1_ Ajouter une question. ");
-		System.out.print("1_ Rechercher une question . ");
-		System.out.print("1_ Supprimer une question . ");
+		System.out.print("2_ Rechercher une question . ");
+		System.out.print("3_ Supprimer une question . ");
 		int choix = scanner.nextInt();
 
 		switch (choix) {
 			case 1:
-				System.out.print("Voulez vous  la consigne ,nomMateriel , scores");
-
-				break;
+				ajouterQuestion();
 
 			case 2:
 
@@ -88,20 +111,28 @@ public class Questionnaire extends Test {
 				break;
 			case 3:
 				System.out.print("Voulez vous entrer la consigne ");
-				String enonce = scanner.nextLine();
-				this.supprimerQuestion(enonce);
+				String enonc = scanner.nextLine();
+				this.supprimerQuestion(enonc);
 
 				break;
 		}
 	}
 
-	public QCM ajouterQCM(Question qst,String enonce) {
-		qst = new QCM(enonce);
-		qst
-		
+	public void ajouterQCM(String enonce) {
+		QCM qst = new QCM(enonce);
+		qst.remplireListRF();
+		qst.remplireListRJ();
+		setQuestions.add(qst);
 
 	}
 
-	
-	
+	public void ajouterQCU(String enonce) {
+		QCU qst = new QCU(enonce);
+
+		qst.remplireListRF();
+		qst.remplireListRJ();
+		setQuestions.add(qst);
+
+	}
+
 }

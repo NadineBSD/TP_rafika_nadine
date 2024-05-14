@@ -13,7 +13,7 @@ import java.util.Set;
  */
 public class Cabinet  {
 	
-	Set<Orthophoniste> setHortho = new HashSet<Orthophoniste> (); 
+	Set<Orthophoniste> setOrtho = new HashSet<Orthophoniste> (); 
 	
 	
 	

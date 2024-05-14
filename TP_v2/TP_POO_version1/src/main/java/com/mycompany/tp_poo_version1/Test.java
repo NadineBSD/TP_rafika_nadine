@@ -49,4 +49,5 @@ public abstract class Test {
 	}
 
 	public abstract float calculeScoreTotal();
+	public abstract void modifier();
 }

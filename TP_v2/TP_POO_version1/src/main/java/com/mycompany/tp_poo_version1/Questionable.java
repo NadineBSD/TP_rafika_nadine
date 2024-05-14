@@ -9,5 +9,9 @@ package com.mycompany.tp_poo_version1;
  * @author Rafika MK
  */
 public interface Questionable {
-	
+
+	public void remplireListRF();
+
+	public void remplireListRJ();
+
 }
