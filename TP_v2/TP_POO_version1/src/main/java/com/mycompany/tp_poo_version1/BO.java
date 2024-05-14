@@ -53,5 +53,11 @@ public class BO {
     public void setNumTel(String numTel) {
         this.numTel=numTel;
     }
+    
+    public void consulterEpreuves() {
+        for (int i = 0; i<listeEpreuves.length ; i++) {
+            listeEpreuves[i]
+        }   
+    }
 
 }
