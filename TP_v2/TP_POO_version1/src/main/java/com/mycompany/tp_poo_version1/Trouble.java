@@ -3,14 +3,14 @@ package com.mycompany.tp_poo_version1;
 public class Trouble {
 
 	private String nom ;
-	private Trouble categorie ;
+	private TypeTrouble categorie ;
 	
 	public Trouble(String nom, String categorie) {
 		this.nom = nom ;
 		switch (categorie) {
-		case "Trouble de déglutition" : this.categorie = CatTrouble.Deglutition ;
-		case "Trouble neuro-dévloppemental" : this.categorie = CatTrouble.NeuroDevloppemental ;
-		case "Trouble cognitif" : this.categorie = CatTrouble.Cognitif ;
+		case "Trouble de déglutition" : this.categorie = TypeTrouble.Deglutition ;
+		case "Trouble neuro-dévloppemental" : this.categorie = TypeTrouble.NeuroDevloppemental ;
+		case "Trouble cognitif" : this.categorie = TypeTrouble.Cognitif ;
 		}
 	}
 
