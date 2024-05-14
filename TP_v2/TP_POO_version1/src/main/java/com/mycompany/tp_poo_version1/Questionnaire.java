@@ -1,13 +1,14 @@
 package com.mycompany.tp_poo_version1;
 
-import java.util.ArrayList;
-public class Questionnaire  extends Test {    //extends Test : add it when u push 
-    private ArrayList<Question> listeQuestion ; 
+import java.util.*;
 
+public class Questionnaire extends Test {    
+    
+    private Set<Question> setQuestions;
 
     public Questionnaire(String nom, int capacite, String conclusion) {
         super(nom, capacite, conclusion);
-        this.listeQuestion = new ArrayList<>();
+        this.setQuestions = new HashSet<Question>();
     }
 
     public ArrayList<Question> getListeQuestion() {
@@ -23,8 +24,7 @@ public class Questionnaire  extends Test {    //extends Test : add it when u pus
         listeQuestion.add(qst);
     }
 
-    
-	@Override
+    @Override
     public float calculeScoreTotal() {
         int totalScore = 0;
         for (Question question : listeQuestion) {
@@ -34,23 +34,27 @@ public class Questionnaire  extends Test {    //extends Test : add it when u pus
     }
 
     public int rechercherQuestion(String enonce) {
-		int pos = 0;
-		for (Question ex : listeQuestion) {
-			if (ex.equals(ex) == true) {
-				break;
-			}
-			pos++;
-		}
-		return (pos);
-	}
+        int pos = 0;
+        for (Question ex : listeQuestion) {
+            if (ex.equals(ex) == true) {
+                break;
+            }
+            pos++;
+        }
+        return (pos);
+    }
 
     public void supprimerQuestion(String enonce) {
-		int p=rechercherQuestion(enonce);
-		listeQuestion.remove(p);
-	}
+        int p = rechercherQuestion(enonce);
+        listeQuestion.remove(p);
+    }
+
+    public void consulterTest() {
+        if (!listeQuestion.isEmpty()) {
+            for (int i = 0; i < listeQuestion.size(); i++) {
+                System.out.println(listeQuestion.get(i).consulterTest());
+            }
+        }
+
+    }
 }
-
-
-
-
-
