@@ -15,8 +15,8 @@ public class AtelierGroupe extends RendezVous {
     private String thematique;
     private Set<Integer> setPatients = new HashSet<Integer>();
     
-    public AtelierGroupe(String date, String heure, String thematique, Set<Integer> listePatients) {
-        super(date,heure,"1h");
+    public AtelierGroupe(String dateHeure, String thematique, Set<Integer> listePatients) {
+        super(dateHeure,"1h");
         this.thematique = thematique;
         this.setPatients =  setPatients;      
     }

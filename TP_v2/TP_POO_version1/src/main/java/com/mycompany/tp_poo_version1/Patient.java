@@ -108,8 +108,72 @@ class Patient {
 
     }
 
-    public void creerRdv (HashSet<Patient> setPatients) throws PatientIntrouvableExcpetion {
+    public void creerRdv(String dateHeure) {
         // this one is to create a rdv for the patient when he comes
+        // It's gonna be either a consultation or Séance de suivi
+
+        RendezVous rdv = null;
+
+        if (nbRdv == 0) { // la 1ère fois que le patient se présente : Consultation
+            // Création d'un dossier (since it's the first time this person registers in here)
+            creerDossier();
+            this.nbRdv++;
+            if (type == TypePatient.ENFANT) {
+                rdv = new ConsultationEnfant(dateHeure, nom, prenom, age); // Le rdv pour enfant a été crée avec succès
+            } else {
+                if (type == TypePatient.ADULTE) {
+                    rdv = new ConsultationAdulte(dateHeure, nom, prenom, age); // Le rdv pour adulte a été crée avec succès
+                }
+            }
+        } else { // pas la première fois : Séance de suivi
+            System.out.println("Le rendez-vous va-t-il se dérouler en présentiel (0) ou en ligne (1) ? : ");
+            int etat = scanner.nextInt();
+            if (etat == 0) { // présentiel
+                rdv = new SeanceSuivi(dateHeure, etat, dossier.getNumDossier());
+            }
+        }
+
+        System.out.println("Veuillez entrer votre observation : ");
+        String observation = scanner.nextLine();
+        rdv.setObservation(observation);
+        // Après la création du rdv, on l'ajoute à la liste des rdvs du patient
+        dossier.ajouterRdv(rdv);
+    }
+
+    // Override equals() method
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Patient patient = (Patient) o;
+        return dossier.getNumDossier() == dossier.getNumDossier();
+    }
+
+    // Override hashCode() method
+    @Override
+    public int hashCode() {
+        return Objects.hash(dossier.getNumDossier());
+    }
+
+    public Patient rechercherPatient(int numDossier, HashSet<Patient> setPatients) {
+        for (Patient patient : setPatients) {
+            if (patient.getDossier().getNumDossier() == numDossier) {
+                return patient;
+            }
+        }
+        return null; // Patient non trouvé
+    }
+
+}
+
+        /*public void creerRdv (Set<Patient> setPatients) throws PatientIntrouvableExcpetion {
+        // this one is to create a rdv for the patient when he comes
+        // It's gonna be either a consultation or Séance de suivi
+        
         RendezVous rdv = null;
         System.out.println("Veuillez entrer : ");
         System.out.println("     -> une date : ");
@@ -177,21 +241,4 @@ class Patient {
         }
         Patient patient = (Patient) o;
         return dossier.getNumDossier() == dossier.getNumDossier();
-    }
-
-    // Override hashCode() method
-    @Override
-    public int hashCode() {
-        return Objects.hash(dossier.getNumDossier());
-    }
-
-    public Patient rechercherPatient(int numDossier, HashSet<Patient> setPatients) {
-        for (Patient patient : setPatients) {
-            if (patient.getDossier().getNumDossier() == numDossier) {
-                return patient;
-            }
-        }
-        return null; // Patient non trouvé
-    }
-
-}
+    }*/

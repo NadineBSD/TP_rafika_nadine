@@ -14,8 +14,8 @@ public class Consultation extends RendezVous {
     protected String prenom;
     protected int age;
     
-    public Consultation(String date, String heure, String duree, String nom, String prenom, int age) {
-        super(date,heure,duree);
+    public Consultation(String dateHeure, String duree, String nom, String prenom, int age) {
+        super(dateHeure,duree);
         this.nom = nom;
         this.prenom = prenom;
         this.age = age;

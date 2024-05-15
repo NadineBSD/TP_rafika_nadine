@@ -14,8 +14,8 @@ public class SeanceSuivi extends RendezVous{
                           // 0 presentiel 1 en ligne
     private int numDossier;
     
-    public SeanceSuivi(String date, String heure, int etat, int numDossier) {
-        super(date,heure,"1h");
+    public SeanceSuivi(String dateHeure, int etat, int numDossier) {
+        super(dateHeure,"1h");
         this.etat = etat;
         this.numDossier = numDossier;
     }

@@ -11,14 +11,12 @@ package com.mycompany.tp_poo_version1;
 public class RendezVous {
     
     protected TypeRdv type;
-    protected String date;
-    protected String heure;
+    protected String dateHeure;
     protected String duree;
     protected String observation;
     
-    public RendezVous(String date, String heure, String duree) {
-        this.date = date;
-        this.heure = heure;
+    public RendezVous(String dateHeure, String duree) {
+        this.dateHeure = dateHeure;
         this.duree = duree;
     }
     

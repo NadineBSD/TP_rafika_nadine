@@ -10,8 +10,8 @@ package com.mycompany.tp_poo_version1;
  */
 public class ConsultationEnfant extends Consultation {
 
-    public ConsultationEnfant(String date, String heure, String nom, String prenom, int age) {
-        super(date, heure, "2h30", nom, prenom, age);
+    public ConsultationEnfant(String dateHeure, String nom, String prenom, int age) {
+        super(dateHeure, "2h30", nom, prenom, age);
     }
 
 }
